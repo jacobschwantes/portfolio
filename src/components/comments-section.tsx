@@ -1,28 +1,20 @@
 "use client";
-import { usePathname } from "next/navigation";
-import Script from "next/script";
-import { useEffect } from "react";
+import Giscus from "@giscus/react";
 export function CommentsSection() {
-	const pathname = usePathname();
-	useEffect(() => {
-		console.log(pathname);
-		if (pathname.includes("blog") && pathname !== "/blog") {
-			document.documentElement.style.setProperty("--show-utterances", "block");
-		} else {
-			document.documentElement.style.setProperty("--show-utterances", "none");
-		}
-	}, [pathname]);
-
 	return (
-		<Script
-			id="utterances"
-			src="https://utteranc.es/client.js"
-			// @ts-ignore
-			repo="jacobschwantes/comments"
-			issue-term="pathname"
-			theme="github-light"
-			crossorigin="anonymous"
-			async
+		<Giscus
+			id="comments"
+			repo="jacobschwantes/portfolio"
+			repoId="R_kgDOJy30LQ"
+			category="Announcements"
+			categoryId="DIC_kwDOJy30Lc4CnmXK"
+			mapping="og:title"
+			strict="0"
+			reactionsEnabled="1"
+			emitMetadata="0"
+			inputPosition="bottom"
+			theme="light"
+			lang="en"
 		/>
 	);
 }

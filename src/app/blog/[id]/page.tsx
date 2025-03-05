@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getPostById, getPosts } from "@/lib/mdx-utils";
 import SectionHeader from "@/components/section-header";
+import { CommentsSection } from "@/components/comments-section";
 
 interface PageProps {
 	params: { id: string };
@@ -12,7 +13,7 @@ export async function generateMetadata({
 	const { meta } = await getPostById(params.id);
 
 	return {
-		title: `${meta.title} | Jacob Schwantes`,
+		title: `${meta.title}`,
 		description: meta.description,
 		openGraph: {
 			images: [`/og/blog?title=${meta.title}`],
@@ -32,7 +33,7 @@ async function Home({ params }: Readonly<PageProps>) {
 			<main className="prose mx-auto dark:prose-invert prose-headings:font-medium dark:prose-headings:text-zinc-200 prose-headings:text-zinc-800 prose-sm max-w-5xl">
 				{content}
 			</main>
-			<SectionHeader title="Comments" />
+			<CommentsSection />
 		</div>
 	);
 }

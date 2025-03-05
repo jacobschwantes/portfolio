@@ -16,15 +16,6 @@ code[data-theme*=" "] span {
 	}
 }
 
-.utterances {
-	display: var(--show-utterances);
-	order: 100;
-}
-
-code {
-	border-radius: 1rem;
-	padding: 1.25rem;
-}
 pre {
 	width: 100%;
 	max-width: 100%;
@@ -34,6 +25,7 @@ pre {
 }
 
 code {
+	border-radius: 1rem;
 	display: inline-block;
 	min-width: 100%;
 	padding: 1rem;
@@ -51,15 +43,4 @@ pre > code > span[data-highlighted-line] {
 	padding-left: calc(1rem - 2px);
 	width: calc(100% + 2rem);
 	display: inline-block;
-}
-
-/* Adjust for dark mode if needed
-@media (prefers-color-scheme: dark) {
-	pre {
-		border-color: #27272a;
-	}
-} */
-
-:root {
-	--show-utterances: none;
 }
