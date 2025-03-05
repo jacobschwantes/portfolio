@@ -27,22 +27,17 @@ const UnderlineLink = ({
 );
 export default async function Home() {
 	return (
-		<main className="gap-16 py-6 flex flex-col">
+		<main className="gap-12 flex flex-col">
 			<section className="dark:text-zinc-300 flex flex-col gap-3">
 				<p className="dark:text-zinc-300 text-zinc-800">
-					Hi, I&apos;m <strong>Jake</strong>, a{" "}
-					<strong>Computer Science</strong> student at the{" "}
+					I&apos;m a software engineer and computer science student at the{" "}
 					<UnderlineLink href="https://twin-cities.umn.edu/">
 						University of Minnesota
 					</UnderlineLink>
-					. If I&apos;m not glued to Formula 1 🏎️, pumping iron 🏋🏻, or
-					whipping up culinary creations 👨🏻‍🍳, I&apos;m building cool stuff with
-					code. 😎
-				</p>
-				<p className="dark:text-zinc-300 text-zinc-800">
-					I love diving deep into my tech interests: design engineering, web
-					development, and distributed systems. I&apos;d love to work with you
-					or just chat, so feel free to reach out!
+					. My passion for software comes from my love for building high-quality
+					products. I&apos;ve created web applications, APIs, real-time systems,
+					and command-line tools. If you&apos;re interested in collaborating,
+					please reach out!
 				</p>
 				<div className="flex -ml-3 ">
 					<Link
@@ -82,7 +77,7 @@ export default async function Home() {
 			</section>
 
 			<section className="gap-1 flex flex-col">
-				<SectionHeader title="Blog" href="/blog" buttonLabel="All posts" />
+				<SectionHeader title="Writing" href="/blog" buttonLabel="All posts" />
 				<Posts />
 			</section>
 		</main>
