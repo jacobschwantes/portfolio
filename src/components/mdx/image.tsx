@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
 
 export default function FullScreenImage(
-	props: React.ComponentProps<"img"> & { caption?: string }
+	props: React.ComponentProps<"img"> & { caption?: string; preload?: boolean }
 ) {
 	const [isFullScreen, setIsFullScreen] = useState(false);
 
