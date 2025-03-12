@@ -17,7 +17,7 @@ const Projects: NextComponentType<NextPageContext, {}, ProjectsProps> = async ({
 }) => {
 	const projects = await getProjects()
 		.then((projects) =>
-			random ? projects.toSorted(() => Math.random() - 0.5) : projects
+			random ? projects.sort(() => Math.random() - 0.5) : projects
 		)
 		.then((projects) =>
 			currentProject
