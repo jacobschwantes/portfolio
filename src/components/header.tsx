@@ -24,7 +24,7 @@ const routes = [
 		path: "/projects",
 	},
 	{
-		name: "Blog",
+		name: "Writing",
 		path: "/blog",
 	},
 ];
@@ -33,7 +33,7 @@ function Header() {
 	const pathname = usePathname();
 
 	return (
-		<header className=" py-8 flex justify-between items-center ">
+		<header className="py-8 flex justify-between items-center ">
 			<Link
 				href="/"
 				className="dark:text-zinc-200 text-zinc-800 text-lg font-medium "

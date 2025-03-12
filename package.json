@@ -25,6 +25,7 @@
     "embla-carousel-react": "^8.0.0-rc19",
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.6",
+    "lucide-react": "^0.479.0",
     "next": "^14.2.13",
     "next-mdx-remote": "^4.4.1",
     "postcss": "8.4.24",

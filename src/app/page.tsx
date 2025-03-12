@@ -25,7 +25,8 @@ const UnderlineLink = ({
 		{children}
 	</Link>
 );
-export default async function Home() {
+
+export default async function Page() {
 	return (
 		<main className="gap-12 flex flex-col">
 			<section className="dark:text-zinc-300 flex flex-col gap-3">
@@ -67,7 +68,7 @@ export default async function Home() {
 				</div>
 			</section>
 
-			<section className="gap-4 flex flex-col">
+			<section className="gap-4 flex flex-col pb-2">
 				<SectionHeader
 					title="Projects"
 					buttonLabel="View more"
@@ -77,7 +78,7 @@ export default async function Home() {
 			</section>
 
 			<section className="gap-1 flex flex-col">
-				<SectionHeader title="Writing" href="/blog" buttonLabel="All posts" />
+				<SectionHeader title="Writing" href="/blog" buttonLabel="View more" />
 				<Posts />
 			</section>
 		</main>
