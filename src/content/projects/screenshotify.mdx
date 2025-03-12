@@ -7,76 +7,68 @@ summary:
   "Capture website screenshots at scale without the hassle of browser setup and
   infrastructure maintenance"
 product: "Screenshot API"
-stack: "React, Next.js, Puppeteer, Express, Firebase, Google Cloud Platform"
+stack: "React, Next.js, Puppeteer, Express.js, Firebase, Google Cloud Platform"
 time: "2023"
 platform: "Web + API"
 ---
 
 <Image
 	src="/images/projects/screenshotify/landing.png"
-	alt="Screenshotify Dashboard"
+	alt="Screenshotify landing page"
 />
 
-## What it does
+## Overview
 
-1. **Screenshotify** is a screenshot API that allows you to take screenshots of
-   websites at scale without the hassle of browser setup and infrastructure
-   maintenance.
+Screenshotify enables developers to programmatically capture high-quality
+website screenshots for monitoring, quality assurance, content generation, data
+collection, and more. The service includes a full-featured dashboard for
+managing API access, tracking usage, and accessing screenshot history.
 
 <Image
 	src="/images/projects/screenshotify/dashboard.png"
-	alt="Screenshotify Dashboard"
+	alt="Screenshotify dashboard"
 	caption="The dashboard: Who doesn't love graphs? 😍"
 />
 
-## Why I built it
+## Key Features
 
-- **Curious about building web services** and wanted to take a stab at creating
-  a useful product.
-- **I already had users**. I previously shipped a simpler version of the product
-  by finding a way to utilize **Puppeteer** within [Vercel](https://vercel.com)
-  cloud functions, which have a generous free tier. To my surprise, there were
-  people who had discovered it organically and were using it within their
-  products.
-- **Wanted to take the idea further** by making it more robust and feature
-  complete while learning about authentication, interface design, serverless
-  architecture, and more.
+- **Flexible Capture Options** - Customize viewport size, device emulation, wait
+  time, and output format, target specific page elements, block ads and
+  trackers, and more
+- **Reliable Infrastructure** - Built on highly scalable and reliable serverless
+  infrastructure
+- **Monitoring Dashboard** - Monitor requests, manage quotas, and view
+  screenshot history
 
 <Image
 	src="/images/projects/screenshotify/settings.png"
-	alt="Screenshotify Dashboard"
-	caption="The dashboard: Who doesn't love graphs? 😍"
+	alt="Screenshotify dashboard settings page"
+	caption="Update email preferences, choose a theme, and manage billing"
 />
 
-## What I learned
+## Technical Implementation
 
-1. **Authentication is a pain**
+### Frontend
 
-I had never made an app where you could sign in before, I took this chance to
-learn about Firebase and PaaS (platform as a service) offerings.
+- **Next.js + React** - Built with server-side rendering for improved SEO and
+  initial load performance
+- **Firebase SDK** - Integrated authentication and Firestore for user data and
+  request history
+- **Data Visualization** - Custom charts for usage monitoring and quota tracking
+- **Theme Switching** - Light and dark mode
 
-2. **Responsive design can be tricky to nail**
+### Backend
 
-How do you design a dashboard that is both easy to use and looks good?
-Responsive graphs, dark mode, and more.
-
-3. **Serverless architecture is a double edged sword**
-
-How do you make a service cheap to run, responsive, and scalable? I explored
-google cloud, fine tuned cloud run configs for perforfmance and cost efficienty,
-learned about dependency caching, Cloudflare, firewalls, and more.
-
-4. **Cloud storage is a game changer**
-
-How do you store and serve hundreds of thousands of images? I learned about
-cloud storage buckets and how to serve images in them from a public URL.
-
-5. **Rate limiting is a tricky problem**
-
-How do you prevent abuse? Efficient rate limiting is a tricky problem to solve,
-but well worth it.
-
-6. **Using headless browsers is tricky**
-
-making them work reliably is challenging, but rewarding. They're used all over
-the industry for testing, web scraping, and more.
+- **Google Cloud Functions** - Serverless architecture that scales automatically
+  based on demand
+- **Headless Browser** - Optimized Puppeteer implementation with dependency
+  caching to reduce
+  [cold start](https://payproglobal.com/answers/what-is-cold-start/) times
+- **Firebase Auth** - User management, authentication, and security rules for
+  Firestore access
+- **Sharded Counters** - Distributed quota tracking system to minimize database
+  contention
+- **Cloud Storage Integration** - Automatic management of screenshot storage
+  with configurable retention policies
+- **Rate Limiting** - Multi-tiered approach combining token bucket algorithm
+  with database-backed persistence
