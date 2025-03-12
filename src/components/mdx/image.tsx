@@ -46,6 +46,7 @@ export default function FullScreenImage(
 						alt={props.alt}
 						style={{ pointerEvents: isFullScreen ? "none" : "auto" }}
 						{...props}
+						loading={props.preload ? "eager" : "lazy"}
 					/>
 				</div>
 				{isFullScreen && (
