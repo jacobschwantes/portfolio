@@ -45,7 +45,7 @@ export default async function Page() {
 						.
 					</p>
 					<p className="text-zinc-800 dark:text-zinc-300">
-						I'm passionate about creating products that balance technical
+						I&apos;m passionate about creating products that balance technical
 						excellence with thoughtful design. Interested in my work?{" "}
 						<UnderlineLink href="/projects">
 							Check out my projects
