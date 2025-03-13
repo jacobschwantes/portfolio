@@ -1,5 +1,6 @@
-# 2024 Portfolio
+# 2025 Portfolio
 
-Built with [Next.js](https://nextjs.org/), [MDX](https://mdxjs.com/), and [TailwindCSS](https://tailwindcss.com/).
+Powered by [Next.js](https://nextjs.org/) and [MDX](https://mdxjs.com/)
 
-Design inspired by [nexxel](https://www.nexxel.dev/), [leerob](https://leerob.io/), and [zaduma](https://zaduma.vercel.app/).
+Design inspired by [nexxel](https://www.nexxel.dev/),
+[leerob](https://leerob.io/), and [zaduma](https://zaduma.vercel.app/).

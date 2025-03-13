@@ -2,57 +2,84 @@
 draft: false
 priority: 1
 name: "Image Sandbox"
-description: "Browser-based visual editor"
-product: "Image Editor"
-stack: "Next.js (App Router), LegendApp/State, Cloudflare (D1, R2, KV, Workers)"
+description: "Browser-based design tool"
+summary:
+  "Create professional graphics without the cost and learning curve of complex
+  design tools"
+product: "Design tool"
+stack: "Next.js, LegendApp/State, Neon (PostgreSQL), Cloudflare (R2, Workers)"
 platform: "Web"
 images: ["editor.png", "editor-dark.png", "dashboard.png", "projects.png"]
+time: "2024 - Present"
+demo: "https://www.imagesandbox.com"
 ---
 
 <Image
-	src="/images/projects/image-sandbox/editor.png"
+	src="/images/projects/image-sandbox/canvas.png"
 	alt="Image Sandbox Editor"
-	caption="Where the magic happens: The editor"
+	eager
 />
 
-## Making pro visuals easy
+## Overview
 
-You know those sleek, professional-looking images you see on developer portfolios? The ones with crisp drop shadows and subtle 3D effects that make you wonder, "How'd they make that look so polished?" Well, surprise – the images you're seeing right now were created using Image Sandbox. That's right, this tool doesn't just talk the talk; it walks the walk.
-
-## Why I Built It
-
-- Figma? Great for designers, overkill for the rest of us.
-- Canva? Started simple, now it's a feature jungle.
-- Others? Either missing key features or cost an arm and a leg.
-- I can't stop coding, even when I should be sleeping.
-
-
-So, I thought, "Why not build something that just works?"
-
-## What makes Image Sandbox different
-
-1. Quick and dirty: Get in, make something awesome, get out.
-2. No account needed: Your projects stick around in your browser.
-3. What you see is what you get: No paywalls on the good stuff.
-
-<Image
-	src="/images/projects/image-sandbox/dashboard.png"
-	alt="Image Sandbox dashboard"
-	caption="Home sweet home: The dashboard with quick actions and templates"
-/>
-
-## How we keep the lights on
-
-Sure, it's free to use, but I'm not running a charity:
-
-- Premium templates for the fancy folks who want that extra oomph.
-- API access for the tech wizards who want to conjure images on the fly. Think server-side magic for dynamic content generation.
-- Cloud sync for the "my office is everywhere" crowd.
+ImageSandbox is a browser-based design tool that bridges the gap between simple
+editors like [Canva](https://www.canva.com/) and professional tools like
+[Figma](https://www.figma.com/). It focuses specifically on creating marketing
+visuals and social media graphics with a clean, intuitive interface and powerful
+editing capabilities that don't require design expertise.
 
 <Image
 	src="/images/projects/image-sandbox/projects.png"
-	alt="Image Sandbox projects page"
-	caption="Where ideas live: The projects page"
+	alt="image sandbox projects page"
 />
 
-Image Sandbox is for anyone who's ever wanted to make their work look good without a degree in graphic design. It's fast, it's simple, and it gets the job done. Give it a spin – your social media game will thank you.
+## Key Features
+
+- **Visual Asset Management** - Add and manipulate images with 3D rotation,
+  borders, browser and device mockups, and more
+- **Element Library** - Quickly add text, arrows, graphics, social media badges,
+  and other design elements
+- **Local Storage** - All projects and assets stored in browser storage,
+  allowing for persistent projects without needing to create accounts
+- **Asset Reusability** - Replace an uploaded asset to see changes cascade
+  across all projects that use it
+- **Platform-Specific Dimensions** - Pre-configured canvas sizes for Instagram,
+  X, LinkedIn, and other platforms
+- **Layer Management** - Control layer ordering, visibility, duplication, and
+  locking of elements
+- **Export Options** - Save designs as WebP, PNG, JPEG, or copy directly to
+  clipboard
+
+<Image
+	src="/images/projects/image-sandbox/assets.png"
+	alt="image sandbox assets page"
+/>
+
+## Technical Implementation
+
+### Frontend
+
+- **React framework** - Built with [Next.js 15](https://nextjs.org/) for
+  improved performance and SEO
+- **State management** -
+  [LegendApp/State](https://legendapp.com/open-source/state/v3/) for optimized
+  state management with automatic persistence to IndexedDB
+- **Animations** - Layer animations and transitions using
+  [Motion](https://motion.dev/)
+- **Custom Layout Engine** - Coordinate system and layout engine, allowing for
+  drag and drop, resizing, and rotation of elements using
+  [interactjs](https://interactjs.io/)
+- **Browser Storage** - Sync project files and uploaded assets to browser
+  storage
+- **Keyboard Commands** - Extensive shortcut system for workflow efficiency
+
+### Backend
+
+- **Dynamic Image Rendering** - Future release of an API will allow you to
+  generate images on the fly with dynamic text, images, and more
+- **Authentication** - Auth via [Auth.js](https://authjs.dev/) and JWT,
+  supporting Magic Link sign in, and Google and GitHub OAuth
+- **Serverless Postgres** - Support authentication and storing user data,
+  project files, and more
+- **Cloud storage** - [Cloudflare R2](https://www.cloudflare.com/r2/) for
+  storing uploaded user assets and images generated by the API

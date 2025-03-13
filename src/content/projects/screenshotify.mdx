@@ -1,73 +1,75 @@
 ---
 draft: false
-priority: 2
+priority: 4
 name: "Screenshotify"
 description: "Screenshot API"
+summary:
+  "Capture website screenshots at scale without the hassle of browser setup and
+  infrastructure maintenance"
 product: "Screenshot API"
-stack: "React, Next.js, Puppeteer, Express, Firebase, Google Cloud Platform"
+stack: "React, Next.js, Puppeteer, Express.js, Firebase, Google Cloud Platform"
+time: "2023"
 platform: "Web + API"
-images:
-  [
-    "preview.png",
-    "token-settings.jpg",
-    "dashboard.jpg",
-    "history.jpg",
-    "tokens.jpg",
-  ]
-# demo: "https://www.screenshotify.app/"
 ---
 
 <Image
+	src="/images/projects/screenshotify/landing.png"
+	alt="Screenshotify landing page"
+	eager
+/>
+
+## Overview
+
+Screenshotify enables developers to programmatically capture high-quality
+website screenshots for monitoring, quality assurance, content generation, data
+collection, and more. The service includes a full-featured dashboard for
+managing API access, tracking usage, and accessing screenshot history.
+
+<Image
 	src="/images/projects/screenshotify/dashboard.png"
-	alt="Screenshotify Dashboard"
+	alt="Screenshotify dashboard"
 	caption="The dashboard: Who doesn't love graphs? 😍"
 />
 
-## Capturing the web, one page at a time
+## Key Features
 
-Ever needed to capture hundreds of high-res screenshots of responsive websites? Probably not, but some people do, ok! (Looking at you, bleary-eyed QA testers chugging your fifth espresso.) Screenshotify was born to scratch that itch. It's not just a tool; it's a peek into the world of API design and cloud architecture.
-
-## Why I built it
-- Manual screenshots? Ain't nobody got time for that.
-- Existing tools? Either clunky or pricey.
-- My coffee machine suggested I need a more complex project.
-- I had a browser tab open to "How to build scalable web services" anyway.
-
-<Image
-	src="/images/projects/screenshotify/history.png"
-	alt="Screenshotify History"
-	caption="Request history: Where every screenshot request gets its 15 minutes of fame"
-/>
-
-## What makes Screenshotify tick
-
-1. **Virtual browser magic**: Puppeteer rendering web pages faster than you can say "cheese!"
-2. **User-friendly dashboard**: Because who doesn't love pretty graphs and logs?
-3. **Cloud-powered**: Serverless functions and persistent storage, oh my!
+- **Flexible Capture Options** - Customize viewport size, device emulation, wait
+  time, and output format, target specific page elements, block ads and
+  trackers, and more
+- **Reliable Infrastructure** - Built on highly scalable and reliable serverless
+  infrastructure
+- **Monitoring Dashboard** - Monitor requests, manage quotas, and view
+  screenshot history
 
 <Image
-	src="/images/projects/screenshotify/token-settings.png"
-	alt="Screenshotify Tokens"
-	caption="Token settings: set limits, track usage, and play 'revoke the token' if you're feeling reckless"
+	src="/images/projects/screenshotify/settings.png"
+	alt="Screenshotify dashboard settings page"
+	caption="Update email preferences, choose a theme, and manage billing"
 />
 
-## Under the hood: A learning playground
+## Technical Implementation
 
-- **Ad-blocking boost**: Because ads are the nemesis of load times.
-- **API key optimization**: Fewer database reads, happier servers, happier wallets.
-- **Cold start combat**: Keeping instances warm like fresh coffee.
+### Frontend
 
-<Image
-	src="/images/projects/screenshotify/tokens.png"
-	alt="Screenshotify Tokens"
-	caption="The tokens page: where API keys play hide and seek 👻"
-/>
+- **Next.js + React** - Built with server-side rendering for improved SEO and
+  initial load performance
+- **Firebase SDK** - Integrated authentication and Firestore for user data and
+  request history
+- **Data Visualization** - Custom charts for usage monitoring and quota tracking
+- **Theme Switching** - Light and dark mode
 
-## What I learned (besides how to spell 'screenshot')
+### Backend
 
-1. Dashboards are like gardens – they need constant tending.
-2. Google Cloud Platform: It's not just for Googlers anymore.
-3. Serverless isn't just a buzzword; it's a lifestyle choice.
-
-Screenshotify wasn't just about capturing web pages; it was about capturing the essence of building a scalable web service. While it may be archived now, the lessons learned continue to render clearly in my developer journey.
-Remember, folks: Always optimize your cold starts, and never underestimate the power of a good ad blocker!
+- **Google Cloud Functions** - Serverless architecture that scales automatically
+  based on demand
+- **Headless Browser** - Optimized Puppeteer implementation with dependency
+  caching to reduce
+  [cold start](https://payproglobal.com/answers/what-is-cold-start/) times
+- **Firebase Auth** - User management, authentication, and security rules for
+  Firestore access
+- **Sharded Counters** - Distributed quota tracking system to minimize database
+  contention
+- **Cloud Storage Integration** - Automatic management of screenshot storage
+  with configurable retention policies
+- **Rate Limiting** - Multi-tiered approach combining token bucket algorithm
+  with database-backed persistence

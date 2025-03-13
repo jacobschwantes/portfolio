@@ -17,33 +17,46 @@ export const metadata = {
 const UnderlineLink = ({
 	href,
 	children,
+	external = false,
 }: {
 	href: string;
 	children: React.ReactNode;
+	external?: boolean;
 }) => (
-	<Link target="_blank" href={href} className="border-b-2 border-zinc-200">
+	<Link
+		target={external ? "_blank" : undefined}
+		href={href}
+		className="border-b-2 border-zinc-200"
+	>
 		{children}
 	</Link>
 );
-export default async function Home() {
+
+export default async function Page() {
 	return (
-		<main className="gap-16 py-6 flex flex-col">
+		<main className="gap-12 flex flex-col">
 			<section className="dark:text-zinc-300 flex flex-col gap-3">
-				<p className="dark:text-zinc-300 text-zinc-800">
-					Hi, I&apos;m <strong>Jake</strong>, a{" "}
-					<strong>Computer Science</strong> student at the{" "}
-					<UnderlineLink href="https://twin-cities.umn.edu/">
-						University of Minnesota
-					</UnderlineLink>
-					. If I&apos;m not glued to Formula 1 🏎️, pumping iron 🏋🏻, or
-					whipping up culinary creations 👨🏻‍🍳, I&apos;m building cool stuff with
-					code. 😎
-				</p>
-				<p className="dark:text-zinc-300 text-zinc-800">
-					I love diving deep into my tech interests: design engineering, web
-					development, and distributed systems. I&apos;d love to work with you
-					or just chat, so feel free to reach out!
-				</p>
+				<div className="flex flex-col gap-1.5">
+					<p className="dark:text-zinc-300 text-zinc-800">
+						Software developer and Computer Science student at the{" "}
+						<UnderlineLink href="https://twin-cities.umn.edu/" external>
+							University of Minnesota
+						</UnderlineLink>
+						.
+					</p>
+					<p className="text-zinc-800 dark:text-zinc-300">
+						I&apos;m passionate about creating products that balance technical
+						excellence with thoughtful design. Interested in my work?{" "}
+						<UnderlineLink href="/projects">
+							Check out my projects
+						</UnderlineLink>{" "}
+						or{" "}
+						<UnderlineLink external href="mailto:hey@jacobschwantes.com">
+							get in touch
+						</UnderlineLink>
+						.
+					</p>
+				</div>
 				<div className="flex -ml-3 ">
 					<Link
 						target="_blank"
@@ -64,7 +77,7 @@ export default async function Home() {
 					<Link
 						target="_blank"
 						className="whitespace-pre gap-1.5 dark:text-zinc-300 group flex items-center md:dark:hover:text-zinc-200 transition-all duration-300 text-zinc-700 md:hover:text-zinc-950 py-1.5 px-3 rounded-lg md:group-hover/list:opacity-75 md:hover:bg-zinc-100/50 md:dark:hover:bg-zinc-800/50 md:hover:!opacity-100 "
-						href="mailto:mail@jacobschwantes.com"
+						href="mailto:hey@jacobschwantes.com"
 					>
 						<EnvelopeClosedIcon className="w-4 h-4 dark:group-hover:text-zinc-200 group-hover:text-zinc-950" />
 						Email
@@ -72,7 +85,7 @@ export default async function Home() {
 				</div>
 			</section>
 
-			<section className="gap-4 flex flex-col">
+			<section className="gap-4 flex flex-col pb-2">
 				<SectionHeader
 					title="Projects"
 					buttonLabel="View more"
@@ -82,7 +95,7 @@ export default async function Home() {
 			</section>
 
 			{/* <section className="gap-1 flex flex-col">
-				<SectionHeader title="Blog" href="/blog" buttonLabel="All posts" />
+				<SectionHeader title="Writing" href="/blog" buttonLabel="View more" />
 				<Posts />
 			</section> */}
 		</main>

@@ -9,15 +9,16 @@ export const postMetaScheme = z.object({
 
 export const projectMetaScheme = z.object({
 	draft: z.boolean(),
-	priority: z.number(),
+	priority: z.number(), // priority of the project ie. 1 is highest, used to sort projects on the projects page
 	name: z.string(),
-	description: z.string(),
-	product: z.string(),
-	stack: z.array(z.string()),
-	platform: z.array(z.string()),
+	description: z.string(), // short description displayed on the narrow project card
+	summary: z.string(), // longer summary displayed on the wide project card
+	product: z.string(), // product type ie. web application, api, etc
+	stack: z.array(z.string()), // tech stack used
 	images: z.array(z.string()),
-	demo: z.string().optional(),
-	repo: z.string().optional(),
+	demo: z.string().optional(), // demo url
+	repo: z.string().optional(), // github repo url
+	time: z.string().optional(), // year project was built ie. 2024 - present
 });
 
 export const metaScheme = z.union([postMetaScheme, projectMetaScheme]);

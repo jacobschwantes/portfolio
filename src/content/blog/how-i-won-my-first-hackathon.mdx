@@ -1,0 +1,96 @@
+---
+draft: true
+title: How I Won My First Hackathon
+description:
+  Learn how to use React Hooks to add state and other features to functional
+  components.
+date: 1741569139427
+---
+
+# How I Won My First Hackathon
+
+In this tutorial, we'll explore the basics of React Hooks, a feature introduced
+in React 16.8 that allows you to use state and other React features without
+writing a class.
+
+## Prerequisites
+
+Before you start, you should have a basic understanding of React and JavaScript.
+
+## Getting Started
+
+First, let's create a new React project if you haven't already:
+
+```bash filename=my-hooks-app.js
+npx create-react-app my-hooks-app
+cd my-hooks-app
+```
+
+## useState Hook
+
+The **useState** hook lets you add state to functional components. Here's how
+you can use it:
+
+```jsx filename=app.js
+import React, { useState } from "react";
+
+function Example() {
+	// Declare a new state variable, "count"
+	const [count, setCount] = useState(0);
+
+	return (
+		<div>
+			<p>You clicked {count} times</p>
+			<button onClick={() => setCount(count + 1)}>Click me</button>
+		</div>
+	);
+}
+```
+
+In this example, **useState** is a Hook that lets you add React state to
+function components.
+
+## useEffect Hook
+
+The **useEffect** Hook lets you perform side effects in function components:
+
+```jsx {3}
+import React, { useState, useEffect } from "react";
+
+function Example() {
+	const [count, setCount] = useState(0);
+
+	// Similar to componentDidMount and componentDidUpdate:
+	useEffect(() => {
+		// Update the document title using the browser API
+		document.title = `You clicked ${count} times`;
+	});
+
+	return (
+		<div>
+			<p>You clicked {count} times</p>
+			<button onClick={() => setCount(count + 1)}>Click me</button>
+		</div>
+	);
+}
+```
+
+```go
+func main() {
+  fmt.Println("Hello, World!")
+}
+```
+
+Here, **useEffect** is used to replace lifecycle methods like
+**componentDidMount**, **componentDidUpdate**, and **componentWillUnmount**.
+
+## Conclusion
+
+Hooks are a powerful feature in React that allow you to use state and other
+features in functional components. They make your components more reusable and
+easier to understand.
+
+## Next Steps
+
+- Try creating your own hooks.
+- Read the React Hooks API reference for more informati

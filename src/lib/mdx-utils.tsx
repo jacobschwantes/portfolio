@@ -4,14 +4,13 @@ import { Meta, Project, Post } from "./types";
 import { compileMDX } from "next-mdx-remote/rsc";
 import rehypePrettyCode from "rehype-pretty-code";
 import { CopyCodeButton } from "@/components/copy-code-button";
-import { useState } from "react";
 
 const PROJECTS_FILE_PATH = "src/content/projects";
 const BLOGS_FILE_PATH = "src/content/blog";
 
 import { visit } from "unist-util-visit";
-import Image from "next/image";
 import FullScreenImage from "@/components/mdx/image";
+import { cn } from "./utils";
 
 const loadMDXFiles = async (directoryPath: string) => {
 	try {
@@ -30,13 +29,26 @@ const parseMDXFile = async (filename: string, directory: string) => {
 		pre: (props: React.HTMLProps<HTMLPreElement>) => {
 			// @ts-expect-error
 			const code = props.raw;
-
+			// @ts-expect-error
+			const filename = JSON.parse(props.meta ?? "{}").filename;
 			return (
 				<div className="relative flex flex-col">
-					<div className="flex absolute top-0 right-0 justify-between items-start p-3">
+					<div
+						className={cn(
+							"flex absolute  justify-between  items-center ",
+							filename
+								? "bg-zinc-100 border border-zinc-200 rounded-t-2xl top-0 left-0 right-0 px-2 py-1 w-full"
+								: "p-3 top-0 right-0"
+						)}
+					>
+						{filename && (
+							<span className="text-zinc-500 text-sm block px-1">
+								{filename}
+							</span>
+						)}
 						<CopyCodeButton code={code} />
 					</div>
-					<pre className="not-prose pt-0" {...props} />
+					<pre className={cn("not-prose", filename && "pt-10")} {...props} />
 				</div>
 			);
 		},
@@ -73,6 +85,11 @@ const parseMDXFile = async (filename: string, directory: string) => {
 											const [key, value] = item.split("=");
 											output[key as keyof CodeBlockMeta] = value;
 										});
+
+										if (output.filename) {
+											node.properties = node.properties || {};
+											node.properties.filename = output.filename;
+										}
 
 										node.meta = JSON.stringify(output);
 									}

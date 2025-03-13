@@ -4,28 +4,43 @@
 
 code[data-theme*=" "],
 code[data-theme*=" "] span {
-  color: var(--shiki-light);
-  background-color: #fafafa;
+	color: var(--shiki-light);
+	background-color: #fafafa;
 }
 
 @media (prefers-color-scheme: dark) {
-  code[data-theme*=" "],
-  code[data-theme*=" "] span {
-    color: var(--shiki-dark);
-    background-color: #18181b;
-  }
+	code[data-theme*=" "],
+	code[data-theme*=" "] span {
+		color: var(--shiki-dark);
+		background-color: #18181b;
+	}
+}
+
+pre {
+	width: 100%;
+	max-width: 100%;
+	overflow-x: auto;
+	border-radius: 1rem;
+	border: 1px solid #f4f4f5;
 }
 
 code {
-  border-radius: 1rem;
-  padding: 1.25rem;
+	border-radius: 1rem;
+	display: inline-block;
+	min-width: 100%;
+	padding: 1rem;
 }
-pre {
-  border-radius: 1rem;
-  border: 1px solid #f4f4f5;
+
+code > .line {
+	display: inline-block;
+	width: 100%;
 }
-/* @media (prefers-color-scheme: dark) {
-  pre {
-    border: 1px solid #27272a;
-  }
-} */
+
+pre > code > span[data-highlighted-line] {
+	background-color: rgba(200, 200, 255, 0.2);
+	border-left: 2px solid #60a5fa;
+	margin-left: -1rem;
+	padding-left: calc(1rem - 2px);
+	width: calc(100% + 2rem);
+	display: inline-block;
+}

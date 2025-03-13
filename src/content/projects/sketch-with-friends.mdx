@@ -1,50 +1,76 @@
 ---
 draft: false
-priority: 6
+priority: 3
 name: "Sketch with Friends"
 description: "Multiplayer drawing game"
-product: "Sketch with Friends"
+summary:
+  "Draw, guess, and compete with friends and players worldwide in a fast-paced,
+  addictive drawing game"
+time: "2024 - Present"
+product: "Multiplayer game"
 stack: "React, Go, WebSockets"
 platform: "Web"
-images:
-  [
-    "preview.png",
-    "guessing-view.png",
-    "drawing-view.png",
-    "home.png",
-    "podium.png",
-    "settings.png",
-  ]
-  
 repo: "https://github.com/walagames/sketch-with-friends"
+demo: "https://sketchwithfriends.com"
 ---
 
 <Image
-	src="/images/projects/sketch-with-friends/guessing-view.png"
-	alt="Sketch with Friends Guessing View"
-	caption="Guessing view: It's like being in a room with your friends, but with a canvas"
+	src="/images/projects/sketch-with-friends/home.png"
+	alt="Sketch with friends landing page"
+	caption="Create a room, invite your friends, and start drawing!"
+	eager
 />
 
-## Where Picasso meets party games
+## Overview
 
-You know that moment when you're trying to draw a giraffe, but it looks more like a deformed lamppost? Welcome to Sketch with Friends, where artistic talent is optional, but laughs are guaranteed. This isn't just another drawing game; it's a digital playground where your terrible stick figures can finally shine.
+Sketch with Friends is a multiplayer drawing game inspired by
+[Skribbl.io](https://skribbl.io) and
+[Pictionary](https://en.wikipedia.org/wiki/Pictionary), with quality-of-life
+improvements and additional gameplay features. Players take turns drawing words
+while others guess, earning points based on speed and accuracy.
+
+<Image
+	src="/images/projects/sketch-with-friends/drawing.png"
+	alt="sketch with friends drawing interface"
+	caption="Use your artistic skills to create a masterpiece!"
+/>
+## Key Features
+
+- **Custom Game Rooms** - Create private rooms with adjustable settings for word
+  difficulty, round count, drawing time, and unique gameplay modes
+- **Global Matchmaking** - Join public games with players from around the world
+- **Complete Drawing Toolkit** - Intuitive color selection, brush sizes, bucket
+  fill, and eraser tools
+- **Dynamic Scoring System** - Earn points for quick guesses and creating easily
+  recognizable drawings
+- **Full Mobile Responsiveness** - Play seamlessly across all devices and
+  browsers
 
 <Image
 	src="/images/projects/sketch-with-friends/podium.png"
-	alt="Sketch with Friends Guessing View"
+	alt="sketch with friends end of round podium"
 	caption="The podium of shame (or glory)"
 />
 
-## How we keep it fun
+## Technical Implementation
 
-- Room creation: Create your own digital art studio, minus the paint smell.
-- Take turns drawing: It's not just about the art; it's about the journey.
-- Best practices: We're serious about our silly drawings.
+### Frontend
 
-<Image
-	src="/images/projects/sketch-with-friends/settings.png"
-	alt="Sketch with Friends Guessing View"
-	caption="Customize your game, because one size doesn't fit all artists"
-/>
+- **React + Vite** - Built with a modern React stack using
+  [Redux Toolkit](https://redux-toolkit.js.org/) for state management and
+  [React Router](https://reactrouter.com/) for navigation
+- **Animation-Rich UI** - Used [Motion](https://motion.dev/) to create engaging
+  spatial animations that represent game progress
+- **Canvas API** - Custom drawing implementation with color selection, brush
+  sizes, and fill tools optimized for mobile and desktop interfaces
 
-Sketch with Friends is for anyone who's ever wanted to prove that their art skills peaked in kindergarten.
+### Backend
+
+- **Go Concurrency Model** - Leveraged goroutines and channels to handle
+  multiple game rooms and players simultaneously with minimal resource overhead
+- **Context-Based Cancellation** - Implemented hierarchical context propagation
+  to ensure clean shutdown of player connections when rooms close
+- **Command/Event Architecture** - Designed a bidirectional event system that
+  mirrors frontend Redux actions for consistent state management
+- **Phase Isolation** - Implemented game state machines where each phase (lobby,
+  drawing, guessing, results) operates with encapsulated state access

@@ -1,18 +1,20 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuLabel,
-	DropdownMenuRadioGroup,
-	DropdownMenuRadioItem,
-	DropdownMenuSeparator,
-	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+	Sheet,
+	SheetClose,
+	SheetContent,
+	SheetDescription,
+	SheetFooter,
+	SheetHeader,
+	SheetTitle,
+	SheetTrigger,
+} from "@/components/ui/sheet";
 import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
+import * as React from "react";
 
 const routes = [
 	{
@@ -24,7 +26,7 @@ const routes = [
 		path: "/projects",
 	},
 	// {
-	// 	name: "Blog",
+	// 	name: "Writing",
 	// 	path: "/blog",
 	// },
 ];
@@ -33,8 +35,11 @@ function Header() {
 	const pathname = usePathname();
 
 	return (
-		<header className=" py-8 flex justify-between items-center ">
-			<Link href="/" className="dark:text-zinc-200 text-zinc-800 text-lg font-medium ">
+		<header className="sm:py-8 py-6 flex justify-between items-center">
+			<Link
+				href="/"
+				className="dark:text-zinc-200 text-zinc-800 text-lg font-medium "
+			>
 				Jacob Schwantes
 			</Link>
 			<nav className="md:flex hidden">
@@ -66,28 +71,34 @@ function Header() {
 
 export default Header;
 
-export function DropdownMenuNavigation({
-	active,
-}: Readonly<{ active: string }>) {
+export function DropdownMenuNavigation({ active }: { active: string }) {
+	const [open, setOpen] = React.useState(false);
 	return (
-		<DropdownMenu>
-			<DropdownMenuTrigger asChild>
+		<Sheet open={open} onOpenChange={setOpen}>
+			<SheetTrigger asChild>
 				<Button variant="outline">
 					<HamburgerMenuIcon aria-label="Navigation Menu" className="" />
 					<span className="sr-only">Navigation Menu</span>
 				</Button>
-			</DropdownMenuTrigger>
-			<DropdownMenuContent className="w-56 mr-4">
-				<DropdownMenuLabel>Navigation</DropdownMenuLabel>
-				<DropdownMenuSeparator />
-				<DropdownMenuRadioGroup value={active}>
+			</SheetTrigger>
+			<SheetContent>
+				<SheetHeader>
+					<SheetTitle className="text-left">Navigation</SheetTitle>
+				</SheetHeader>
+				<div className="grid gap-4 py-4">
 					{routes.map(({ name, path }) => (
-						<Link key={name} href={path}>
-							<DropdownMenuRadioItem value={path}>{name}</DropdownMenuRadioItem>
+						<Link key={name} href={path} onClick={() => setOpen(false)}>
+							<Button
+								variant={active === path ? "default" : "outline"}
+								className="w-full"
+							>
+								{name}
+							</Button>
 						</Link>
 					))}
-				</DropdownMenuRadioGroup>
-			</DropdownMenuContent>
-		</DropdownMenu>
+				</div>
+				<SheetFooter></SheetFooter>
+			</SheetContent>
+		</Sheet>
 	);
 }
