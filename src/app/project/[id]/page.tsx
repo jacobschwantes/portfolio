@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ExternalLinkIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 import SectionHeader from "@/components/section-header";
 import type { Metadata } from "next";
+import { Button } from "@/components/ui/button";
 interface PageProps {
 	params: { id: string };
 }
@@ -41,7 +42,7 @@ async function Page({ params }: Readonly<PageProps>) {
 						{meta.description}
 					</p>
 				</div>
-				<div className="flex gap-1">
+				<div className="gap-1 hidden md:flex">
 					{meta.demo && (
 						<Link
 							target="_blank"
@@ -60,6 +61,24 @@ async function Page({ params }: Readonly<PageProps>) {
 						>
 							<GitHubLogoIcon className="  h-4 w-4 dark:group-hover:text-zinc-200 group-hover:text-zinc-950" />
 							Code
+						</Link>
+					)}
+				</div>
+				<div className="flex gap-6 md:hidden">
+					{meta.demo && (
+						<Link target="_blank" href={meta.demo}>
+							<Button variant="link" className="px-0 flex gap-2 text-base font-normal">
+								<ExternalLinkIcon className="w-4 h-4 dark:group-hover:text-zinc-200 group-hover:text-zinc-950" />
+								Try it
+							</Button>
+						</Link>
+					)}
+					{meta.repo && (
+						<Link target="_blank" href={meta.repo}>
+							<Button variant="link" className="px-0 flex gap-2 text-base font-normal">
+								<GitHubLogoIcon className="w-4 h-4 dark:group-hover:text-zinc-200 group-hover:text-zinc-950" />
+								Code
+							</Button>
 						</Link>
 					)}
 				</div>
@@ -84,7 +103,7 @@ async function Page({ params }: Readonly<PageProps>) {
 					<SectionHeader
 						title="More projects"
 						href="/projects"
-						buttonLabel="All"
+						buttonLabel="All projects"
 					/>
 					<Projects currentProject={slug} random limit={2} />
 				</div>
