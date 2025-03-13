@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
 
 export default function FullScreenImage(
-	props: React.ComponentProps<"img"> & { caption?: string; preload?: boolean }
+	props: React.ComponentProps<"img"> & { caption?: string; eager?: boolean }
 ) {
 	const [isFullScreen, setIsFullScreen] = useState(false);
 
@@ -45,8 +45,8 @@ export default function FullScreenImage(
 						src={props.src}
 						alt={props.alt}
 						style={{ pointerEvents: isFullScreen ? "none" : "auto" }}
+						loading={props.eager ? "eager" : "lazy"}
 						{...props}
-						loading={props.preload ? "eager" : "lazy"}
 					/>
 				</div>
 				{isFullScreen && (
