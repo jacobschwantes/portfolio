@@ -60,7 +60,7 @@ export default async function Page() {
 					<Link
 						target="_blank"
 						className="whitespace-pre gap-1.5 dark:text-zinc-300 group flex items-center md:dark:hover:text-zinc-200 transition-all duration-300 text-zinc-700 md:hover:text-zinc-950 py-1.5 px-3 rounded-lg md:group-hover/list:opacity-75 md:hover:bg-zinc-100/50 md:dark:hover:bg-zinc-800/50 md:hover:!opacity-100 "
-						href="mailto:mail@jacobschwantes.com"
+						href="mailto:hey@jacobschwantes.com"
 					>
 						<EnvelopeClosedIcon className="w-4 h-4 dark:group-hover:text-zinc-200 group-hover:text-zinc-950" />
 						Email
