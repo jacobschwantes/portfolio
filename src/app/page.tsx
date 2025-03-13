@@ -17,11 +17,17 @@ export const metadata = {
 const UnderlineLink = ({
 	href,
 	children,
+	external = false,
 }: {
 	href: string;
 	children: React.ReactNode;
+	external?: boolean;
 }) => (
-	<Link target="_blank" href={href} className="border-b-2 border-zinc-200">
+	<Link
+		target={external ? "_blank" : undefined}
+		href={href}
+		className="border-b-2 border-zinc-200"
+	>
 		{children}
 	</Link>
 );
@@ -30,16 +36,27 @@ export default async function Page() {
 	return (
 		<main className="gap-12 flex flex-col">
 			<section className="dark:text-zinc-300 flex flex-col gap-3">
-				<p className="dark:text-zinc-300 text-zinc-800">
-					I&apos;m a software engineer and computer science student at the{" "}
-					<UnderlineLink href="https://twin-cities.umn.edu/">
-						University of Minnesota
-					</UnderlineLink>
-					. My passion for software comes from my love for building high-quality
-					products. I&apos;ve created web applications, APIs, real-time systems,
-					and command-line tools. If you&apos;re interested in collaborating,
-					please reach out!
-				</p>
+				<div className="flex flex-col gap-1.5">
+					<p className="dark:text-zinc-300 text-zinc-800">
+						Software developer and Computer Science student at the{" "}
+						<UnderlineLink href="https://twin-cities.umn.edu/" external>
+							University of Minnesota
+						</UnderlineLink>
+						.
+					</p>
+					<p className="text-zinc-800 dark:text-zinc-300">
+						I'm passionate about creating products that balance technical
+						excellence with thoughtful design. Interested in my work?{" "}
+						<UnderlineLink href="/projects">
+							Check out my projects
+						</UnderlineLink>{" "}
+						or{" "}
+						<UnderlineLink external href="mailto:hey@jacobschwantes.com">
+							get in touch
+						</UnderlineLink>
+						.
+					</p>
+				</div>
 				<div className="flex -ml-3 ">
 					<Link
 						target="_blank"
@@ -77,10 +94,10 @@ export default async function Page() {
 				<Projects limit={2} />
 			</section>
 
-			<section className="gap-1 flex flex-col">
+			{/* <section className="gap-1 flex flex-col">
 				<SectionHeader title="Writing" href="/blog" buttonLabel="View more" />
 				<Posts />
-			</section>
+			</section> */}
 		</main>
 	);
 }
