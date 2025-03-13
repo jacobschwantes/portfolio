@@ -25,10 +25,10 @@ const routes = [
 		name: "Projects",
 		path: "/projects",
 	},
-	{
-		name: "Writing",
-		path: "/blog",
-	},
+	// {
+	// 	name: "Writing",
+	// 	path: "/blog",
+	// },
 ];
 
 function Header() {
